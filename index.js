@@ -24,7 +24,7 @@ client.on("message", async message => {
     await reactionMessage.react("🎟");
 
     // Awaiting a reaction to the embed message. Time is measured in ms. (30000 ms - 30 seconds)
-    reactionMessage.awaitReactions(Filter, {max: 1, time: 30000, errors: ["time"]}).then(collected => {
+    reactionMessage.awaitReactions(Filter, {max: 9999999, time: 20000000000, errors: ["time"]}).then(collected => {
         // Getting the first reaction in the collection.
         const reaction = collected.first();
         
