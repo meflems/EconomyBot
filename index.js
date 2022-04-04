@@ -33,7 +33,7 @@ client.on("message", async message => {
             case "🎟":
                 var server = message.guild;
                 var name = message.author.username;
-                server.channels.create(tickets-${name}, {
+                server.channels.create(`tickets-${name}`, {
                 permissionOverwrites: [
 				    {
 					    id: message.author.id,
