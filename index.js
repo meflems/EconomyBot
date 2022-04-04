@@ -33,9 +33,25 @@ client.on("message", async message => {
             case "🎟":
                 var server = message.guild;
                 var name = message.author.username;
-                server.channels.create(name, "text");
-                const ChID = Discord.channels.cache.find(channel => channel.name === name);
-                const ChIDsend = await message.channel.send(ChID);
+                server.channels.create(tickets-${name}, {
+                permissionOverwrites: [
+				    {
+					    id: message.author.id,
+					    allow: ['SEND_MESSAGES', 'VIEW_CHANNEL'],
+				    },
+				    {
+					    id: message.guild.roles.everyone,
+					    deny: ['VIEW_CHANNEL'],
+				    },
+			    ],
+                type: "text",
+                }).then(async channel => {
+			            channel.send(`Hi ${message.author} ini adalah tickets mu, kamu bisa memesan produk di sini, jika admin online dan admin sulit di hubungi, tag saja tidak apa-apa! semoga betah ya!`);
+			            const logchannel = message.guild.channels.cache.find(channel => channel.name === 'tickets-logs');
+			            if(logchannel) {
+				            logchannel.send(`New tickets from ${message.author.id}. Click  <#${channel.id}> to view`);
+			            }
+		        });
                 break
         }
     })
