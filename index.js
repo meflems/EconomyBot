@@ -40,6 +40,14 @@ client.on("message", async message => {
 					    allow: ['SEND_MESSAGES', 'VIEW_CHANNEL'],
 				    },
 				    {
+					    id: message.guild.roles.admin,
+					    allow: ['SEND_MESSAGE', 'VIEW_CHANNEL', 'MANAGE_MESSAGE'],
+					},
+					{
+						id: message.guild.roles.seller,
+						allow: ['SEND_MESSAGE', 'VIEW_CHANNEL', 'MANAGE_MESSAGE', 'ATTACH_FILES'],
+					},
+				    {
 					    id: message.guild.roles.everyone,
 					    deny: ['VIEW_CHANNEL'],
 				    },
