@@ -59,7 +59,7 @@ client.on("message", async message => {
 			            if(logchannel) {
 				            logchannel.send(`New tickets from ${message.author.id}. Click  <#${channel.id}> to view`);
 			            }
-		        }).catch(err);
+		        }).catch(err) console.log(err);
                 break
         }
     })
