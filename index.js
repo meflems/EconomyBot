@@ -12,7 +12,7 @@ client.on("message", async message => {
     const Filter = (reaction, user) => user.id == message.author.id;
 
     // Creating the embed message.
-    const Embed = new discord.MessageEmbed()
+    const Embed = new Discord.MessageEmbed()
         .setTitle(`FrownMC Cloud - Tickets`)
         .setColor("#8F00FF")
         .setDescription(`Open tickets with react 🔖`);
