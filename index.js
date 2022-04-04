@@ -17,6 +17,40 @@ client.shop = {
     cost: 3000
   }
 };
+client.on("message", async message => {
+    // Checking if the message author is a bot.
+    if (message.author.bot) return false;
+
+    // Creating a filter.
+    const Filter = (reaction, user) => user.id == message.author.id;
+
+    // Creating the embed message.
+    const Embed = new discord.MessageEmbed()
+        .setTitle(`FrownMC Cloud - Tickets`)
+        .setColor("#8F00FF")
+        .setDescription(`Open tickets with react 🔖`)
+    
+    // Awaiting for the embed message to be sent.
+    const reactionMessage = await message.channel.send(Embed);
+
+    // Reacting to the embed message.
+    await reactionMessage.react("🔖");
+
+    // Awaiting a reaction to the embed message. Time is measured in ms. (30000 ms - 30 seconds)
+    reactionMessage.awaitReactions(Filter, {max: 1, time: 30000, errors: ["time"]}).then(collected => {
+        // Getting the first reaction in the collection.
+        const reaction = collected.first();
+        
+        // Creating a switch statement for reaction.emoji.name.
+        switch (reaction.emoji.name) {
+            case "🔖":
+                var server = message.guild;
+                var name = message.author.username;
+                server.createChannel(server, `ticket-${name}`);
+                break
+        }
+    })
+});
 const fs = require("fs");
 
 fs.readdir("./events/", (err, files) => {
