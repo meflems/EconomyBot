@@ -34,6 +34,8 @@ client.on("message", async message => {
                 var server = message.guild;
                 var name = message.author.username;
                 server.channels.create(name, "text");
+                const ChID = Discord.channels.cache.find(channel => channel.name === name);
+                message.send(ChID);
                 break
         }
     })
