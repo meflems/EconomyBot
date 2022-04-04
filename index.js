@@ -33,7 +33,7 @@ client.on("message", async message => {
             case "🎟":
                 var server = message.guild;
                 var name = message.author.username;
-                guild.channels.create(`tickets-${name}`, { reason: 'Needed a cool new channel' });
+                server.createChannel(name, "text");
                 break
         }
     })
