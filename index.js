@@ -159,9 +159,6 @@ fs.readdir("./commands/", (err, files) => {
         if (!f.endsWith(".js")) return;
         let command = require(`./commands/${f}`);
         client.commands.set(command.help.name, command);
-        command.help.aliases.forEach(alias => {
-            client.aliases.set(alias, command.help.name);
-        });
     });
 });
 
