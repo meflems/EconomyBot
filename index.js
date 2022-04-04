@@ -54,7 +54,6 @@ client.on("message", async message => {
 			    ],
                 type: "text",
                 }).then(async channel => {
-                	    message.reply(`good`);
 			            channel.send(`Hi ${message.author} ini adalah tickets mu, kamu bisa memesan produk di sini, jika admin online dan admin sulit di hubungi, tag saja tidak apa-apa! semoga betah ya!`);
 			            const logchannel = message.guild.channels.cache.find(channel => channel.name === 'tickets-logs');
 			            if(logchannel) {
