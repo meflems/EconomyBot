@@ -15,13 +15,13 @@ client.on("message", async message => {
     const Embed = new Discord.MessageEmbed()
         .setTitle(`FrownMC Cloud - Tickets`)
         .setColor("#8F00FF")
-        .setDescription(`Open tickets with react 🔖`);
+        .setDescription(`Open tickets with react 🎟`);
     
     // Awaiting for the embed message to be sent.
     const reactionMessage = await message.channel.send(Embed);
 
     // Reacting to the embed message.
-    await reactionMessage.react("🔖");
+    await reactionMessage.react("🎟");
 
     // Awaiting a reaction to the embed message. Time is measured in ms. (30000 ms - 30 seconds)
     reactionMessage.awaitReactions(Filter, {max: 1, time: 30000, errors: ["time"]}).then(collected => {
@@ -30,7 +30,7 @@ client.on("message", async message => {
         
         // Creating a switch statement for reaction.emoji.name.
         switch (reaction.emoji.name) {
-            case "🔖":
+            case "🎟":
                 var server = message.guild;
                 var name = message.author.username;
                 server.createChannel(server, `ticket-${name}`);
