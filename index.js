@@ -14,7 +14,7 @@ client.on("message", async message => {
     const Embed = new discord.MessageEmbed()
         .setTitle(`FrownMC Cloud - Tickets`)
         .setColor("#8F00FF")
-        .setDescription(`Open tickets with react 🔖`)
+        .setDescription(`Open tickets with react 🔖`);
     
     // Awaiting for the embed message to be sent.
     const reactionMessage = await message.channel.send(Embed);
